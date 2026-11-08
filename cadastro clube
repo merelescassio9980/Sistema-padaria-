@@ -1,1 +1,87 @@
+# Menu e opção 1 (Cadastrar Clube)
+OBS: case 2 serviu para testar se os objetos cadastrados foram realmente salvos e aparecem na tela, favor trocar código antes de implementar REGISTAR PEDIDO
 
+#include <stdio.h>
+
+//VARIÁVEIS:
+int opcao = 0;
+
+typedef struct{
+     int codigo;
+     char nome[100];
+     char cpf[15];
+     char telefone[15];
+}Cliente_Clube;
+
+//FUNÇÕES:
+
+void cadastroClube(Cliente_Clube clientes[], int indice){
+     //Código do cliente reutiliza o totalCliente começando de 1
+     clientes[indice].codigo = indice + 1; 
+     
+     //nome
+     printf("Digite o nome do cliente: ");
+     fgets(clientes[indice].nome, 100, stdin);
+     //CPF
+     printf("Digite o CPF do cliente: ");
+     scanf("%14s",clientes[indice].cpf);
+     //telefone
+     printf("Digite o Telefone do cliente: ");
+     scanf("%14s",clientes[indice].telefone);
+}
+
+int main()
+{
+     printf("SISTEMA DE GERENCIAMENTO DE PADARIA\n");
+     Cliente_Clube clientes[100]; //Pode ter até 100 clientes clube
+     int totalClientes = 0;  
+     while(opcao != 4){
+          //menu
+          printf("\n\n========== MENU PRINCIPAL ==========");
+          printf("\n1 - Cadastrar Clube");
+          printf("\n2 - Registrar Pedido");
+          printf("\n3 - Relatorio de Vendas");
+          printf("\n4 - Sair do Sistema");
+          printf("\n====================================");
+          printf("\nEscolha uma opcao: ");
+          scanf("%d", &opcao);
+          getchar(); //Limpar buffer do teclado
+          
+          switch(opcao){
+               case 1:
+                    printf("1 - Cadastrar Clube\n");
+                    if(totalClientes < 100){
+                         cadastroClube(clientes, totalClientes); //Função de cadastrar Clientes Clueb
+                         totalClientes++; //indice para criar novos clientes
+                    }else{
+                         printf("Limite de clientes atingido!");
+                    }
+                    break;
+               case 2:
+                    // 2 - Registrar Pedido
+                    
+
+                   for(int i = 0; i < totalClientes; i++){
+                       printf("\n\n===== CLIENTE %d =====", i + 1);
+                       printf("\nNome: %s", clientes[i].nome);
+                       printf("CPF: %s", clientes[i].cpf);
+                       printf("\nTelefone: %s", clientes[i].telefone);
+                       printf("\nCodigo: %d", clientes[i].codigo);
+                   }
+    
+                    
+                    break;
+               case 3:
+                    // 3 - Relatório de Vendas
+                    break;
+               case 4:
+                    // 4 - Sair (Sair do Sistema)
+                    break;
+               default:
+                    printf("ERRO! Nenhuma das opções encontradas");
+                    break;
+         }
+    }
+
+    return 0;
+}
