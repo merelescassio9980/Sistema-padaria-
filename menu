@@ -1,4 +1,5 @@
 # Apenas parte do MENU:
+OBS: case 2 serviu para testar se os objetos cadastrados foram realmente salvos e aparecem na tela, favor trocar código antes de implementar REGISTAR PEDIDO
 
 int main()
 {
