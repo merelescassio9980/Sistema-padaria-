@@ -1,1 +1,123 @@
+#include <stdio.h>
 
+typedef enum {
+    pendente,
+    em_preparo,
+    entregue
+} status_pedido;
+
+typedef struct {
+    int codigo;
+    char cliente[50];
+    int quantidades[5];
+    float total_pedido;
+    status_pedido status;
+} pedido;
+
+void aplicar_desconto(float *total, float percentual) {
+    *total = *total - (*total * (percentual / 100.0));
+}
+
+void exibir_contagem_preparo(int n) {
+    if (n == 0) {
+        printf("Pedido pronto para entrega!\n");
+        return;
+    }
+
+    printf("Preparando item... faltam %d etapas\n", n);
+    exibir_contagem_preparo(n - 1);
+}
+
+void cadastrar_pedido(pedido pedidos[], int *contador) {
+    int opcao, quantidade;
+    int continuar = 1;
+
+    printf("\nCadastrar pedido - Bella Massa\n");
+
+    pedidos[*contador].codigo = *contador + 1;
+
+    printf("Nome do cliente: ");
+    scanf(" %49[^\n]", pedidos[*contador].cliente);
+
+    for (int i = 0; i < 5; i++) {
+        pedidos[*contador].quantidades[i] = 0;
+    }
+
+    pedidos[*contador].total_pedido = 0;
+
+    while (continuar == 1) {
+
+        printf("\nProdutos:\n");
+        printf("1 - Pao frances (R$ 0,80)\n");
+        printf("2 - Bolo (R$ 8,00)\n");
+        printf("3 - Pao de queijo (R$ 3,00)\n");
+        printf("4 - Minipizza (R$ 6,00)\n");
+        printf("5 - Minichurros (R$ 5,00)\n");
+
+        printf("\nDigite o ID do produto (1-5): ");
+        scanf("%d", &opcao);
+
+        if (opcao < 1 || opcao > 5) {
+            printf("Produto invalido!\n");
+            continue;
+        }
+
+        printf("Digite a quantidade: ");
+        scanf("%d", &quantidade);
+
+        if (quantidade <= 0) {
+            printf("Quantidade invalida!\n");
+            continue;
+        }
+
+        pedidos[*contador].quantidades[opcao - 1] += quantidade;
+
+        switch (opcao) {
+            case 1:
+                pedidos[*contador].total_pedido += quantidade * 0.80;
+                break;
+
+            case 2:
+                pedidos[*contador].total_pedido += quantidade * 8.00;
+                break;
+
+            case 3:
+                pedidos[*contador].total_pedido += quantidade * 3.00;
+                break;
+
+            case 4:
+                pedidos[*contador].total_pedido += quantidade * 6.00;
+                break;
+
+            case 5:
+                pedidos[*contador].total_pedido += quantidade * 5.00;
+                break;
+        }
+
+        printf("\nDeseja adicionar outro produto?\n");
+        printf("1 - Sim\n");
+        printf("2 - Nao\n");
+        printf("Opcao: ");
+        scanf("%d", &continuar);
+
+        if (continuar != 1) {
+            continuar = 2;
+        }
+    }
+
+    pedidos[*contador].status = pendente;
+
+    if (pedidos[*contador].total_pedido > 50.0) {
+        aplicar_desconto(&pedidos[*contador].total_pedido, 10.0);
+        printf("Desconto de 10%% aplicado via ponteiro!\n");
+    }
+
+    printf("\nPedido cadastrado!\n");
+    printf("Codigo: %d\n", pedidos[*contador].codigo);
+    printf("Cliente: %s\n", pedidos[*contador].cliente);
+    printf("Total: R$ %.2f\n", pedidos[*contador].total_pedido);
+
+    exibir_contagem_preparo(2);
+
+    (*contador)++;
+}
