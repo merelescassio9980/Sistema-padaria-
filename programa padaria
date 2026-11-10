@@ -2,6 +2,8 @@
 #include <stdbool.h>
 #include <string.h>
 
+#define DESCONTO_CLUBE 5.0
+
 // ESTRUTURA DO CLIENTE
 typedef struct Cliente_Clube {
     int codigo;
@@ -15,6 +17,7 @@ typedef struct pedido {
     int codigo;
     int quantidades[5];
     float total_pedido;
+    int clube;
 } pedido;
 
 // PROTOTIPOS
@@ -31,6 +34,8 @@ void Registrarpedido(
     pedido pedidos[],
     int *contador
 );
+
+void pagamento(pedido *p);
 
 // FUNCAO MENU
 void menu(Cliente_Clube clientes[], int *indice, int *cadastrado,
@@ -69,15 +74,19 @@ void menu(Cliente_Clube clientes[], int *indice, int *cadastrado,
                 break;
 
             case 2:
-                //regitrar pedido
-                Registrarpedido(clientes, indice, cadastrado,(char[15]){0},false,0,(char[15]){0},pedidos,contador);
-                pagamento();
+                //registrar pedido
+                Registrarpedido(clientes, indice, cadastrado,
+                    (char[15]){0}, false, 0, (char[15]){0},
+                    pedidos, contador);
+
+                pagamento(&pedidos[*contador - 1]);
+
                 break;
 
             case 3:
                 // RelatoriodeVendas();
-                Relatorio();
-            
+                relatorio();
+
             case 4:
                 //sair (sair do sistema)
                 printf("\nSaindo do sistema...\n");
@@ -127,13 +136,14 @@ void Registrarpedido(
     int Rclube;
     int opcao, quantidade;
     int continuar = 1;
+    int clube_pedido = 0;
 
     //pergunta se o cliente quer o clube da padaria
     printf("\nDeseja por o clube da padaria Bella Massa? (1-sim 2-nao): ");
     scanf("%d", &Rclube);
-    
+
     if (Rclube == 1) {
-        //verifica se o cliente tem clube, se não tiver o clube automaticamente ira para a função cadastrar clube
+        //verifica se o cliente tem clube
         if (*indice > 0) {
 
             //pede para digitar o cpf do clube
@@ -145,12 +155,13 @@ void Registrarpedido(
                 scanf("%14s", ccpf);
 
                 cpfdig = false;
-                
+
                 for (int i = 0; i < *indice; i++) {
 
                     if (strcmp(ccpf, clientes[i].cpf) == 0) {
                         printf("\nClube inserido no pedido!\n");
                         cpfdig = true;
+                        clube_pedido = 1;
                         break;
                     }
                 }
@@ -172,6 +183,7 @@ void Registrarpedido(
                 if (*cadastrado == 1) {
                     (*indice)++;
                     *cadastrado = 0;
+                    clube_pedido = 1;
                 }
             }
         }
@@ -197,6 +209,9 @@ void Registrarpedido(
     }
 
     pedidos[*contador].total_pedido = 0;
+
+    // REGISTRA SE O CLIENTE PARTICIPA DO CLUBE
+    pedidos[*contador].clube = clube_pedido;
 
     while (continuar == 1) {
 
@@ -276,12 +291,158 @@ void Registrarpedido(
     (*contador)++;
 }
 
-//pagamento
-void pagamento(){
-
+// FUNCAO PARA APLICAR DESCONTO
+void aplicar_desconto(float *total, float percentual) {
+    *total = *total - (*total * percentual / 100.0);
 }
 
-//emitir nota
+// MODULO DE PAGAMENTO E DESCONTO
+void pagamento(pedido *p) {
+
+    int forma_pagamento;
+    float valor_original;
+    float valor_desconto = 0.0;
+    float valor_recebido = 0.0;
+    float troco = 0.0;
+
+    if (p == NULL || p->total_pedido < 0) {
+        printf("Erro: pedido invalido!\n");
+        return;
+    }
+
+    valor_original = p->total_pedido;
+
+    printf("\n=================================\n");
+    printf("       CLUBE PADARIA\n");
+    printf("=================================\n");
+
+    // VERIFICAÇÃO AUTOMÁTICA DO CLUBE
+    if (p->clube == 1) {
+
+        aplicar_desconto(&p->total_pedido,
+                         DESCONTO_CLUBE);
+
+        valor_desconto = valor_original - p->total_pedido;
+
+        printf("\nParabens! Desconto do clube aplicado!\n");
+        printf("Valor liquido com desconto: R$ %.2f\n",
+               p->total_pedido);
+
+    } else {
+
+        printf("\nCliente sem desconto do clube.\n");
+    }
+
+    // Escolha da forma de pagamento
+    printf("\n=================================\n");
+    printf("         FORMAS DE PAGAMENTO\n");
+    printf("=================================\n");
+
+    printf("1 - Dinheiro\n");
+    printf("2 - Pix\n");
+    printf("3 - Cartao de debito\n");
+    printf("4 - Cartao de credito\n");
+
+    do {
+        printf("\nEscolha a forma de pagamento: ");
+
+        if (scanf("%d", &forma_pagamento) != 1) {
+            printf("Entrada invalida!\n");
+            while (getchar() != '\n');
+            forma_pagamento = 0;
+        }
+
+        if (forma_pagamento < 1 || forma_pagamento > 4) {
+            printf("Forma de pagamento invalida!\n");
+        }
+
+    } while (forma_pagamento < 1 || forma_pagamento > 4);
+
+    // Processamento do pagamento
+    switch (forma_pagamento) {
+
+    case 1:
+
+        printf("\nPagamento em dinheiro.\n");
+
+        do {
+            printf("Valor recebido: R$ ");
+
+            if (scanf("%f", &valor_recebido) != 1) {
+                printf("Valor invalido!\n");
+                while (getchar() != '\n');
+                valor_recebido = -1;
+                continue;
+            }
+
+            if (valor_recebido < p->total_pedido) {
+                printf("Valor insuficiente!\n");
+                printf("Faltam R$ %.2f\n",
+                       p->total_pedido - valor_recebido);
+            }
+
+        } while (valor_recebido < p->total_pedido);
+
+        troco = valor_recebido - p->total_pedido;
+        break;
+
+    case 2:
+
+        printf("\nPagamento via Pix.\n");
+        printf("Valor a transferir: R$ %.2f\n",
+               p->total_pedido);
+        break;
+
+    case 3:
+
+        printf("\nPagamento no cartao de debito.\n");
+        printf("Valor cobrado: R$ %.2f\n",
+               p->total_pedido);
+        break;
+
+    case 4:
+
+        printf("\nPagamento no cartao de credito.\n");
+        printf("Valor cobrado: R$ %.2f\n",
+               p->total_pedido);
+        break;
+    }
+
+    // Resumo final
+    printf("\n=================================\n");
+    printf("       RESUMO DO PAGAMENTO\n");
+    printf("=================================\n");
+
+    printf("Valor original: R$ %.2f\n",
+           valor_original);
+
+    printf("Participante do clube: %s\n",
+           p->clube == 1 ? "Sim" : "Nao");
+
+    printf("Desconto aplicado: R$ %.2f\n",
+           valor_desconto);
+
+    printf("---------------------------------\n");
+
+    printf("TOTAL A PAGAR: R$ %.2f\n",
+           p->total_pedido);
+
+    if (forma_pagamento == 1) {
+
+        printf("Valor recebido: R$ %.2f\n",
+               valor_recebido);
+
+        printf("Troco: R$ %.2f\n", troco);
+    }
+
+    printf("---------------------------------\n");
+
+    printf("Status: Pagamento realizado!\n");
+
+    printf("=================================\n");
+}
+
+//EMITIR NOTA
 void emitirNota(){
 
 }
