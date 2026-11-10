@@ -1,1 +1,149 @@
+#include <stdio.h>
+//Sujeito a alteção antes de eu sair de casa
+
+// Desconto do Clube da Padaria
+#define DESCONTO_CLUBE 05.0
+
+// Modulo de pagamento e desconto
+void processar_pagamento(pedido *p) {
+
+    int clube;
+    int pagamento;
+    float valor_original;
+    float valor_desconto = 0;
+    float valor_recebido;
+    float troco;
+
+    valor_original = p->total_pedido;
+
+    printf("\n=================================\n");
+    printf("       CLUBE PADARIA\n");
+    printf("=================================\n");
+
+    // Verificacao do clube
+    do {
+        printf("\nO cliente participa do clube?\n");
+        printf("1 - Sim\n");
+        printf("2 - Nao\n");
+        printf("Opcao: ");
+        scanf("%d", &clube);
+
+        if (clube != 1 && clube != 2) {
+            printf("Opcao invalida! Tente novamente.\n");
+        }
+
+    } while (clube != 1 && clube != 2);
+
+    // Aplicacao do desconto
+    if (clube == 1) {
+
+        valor_desconto = valor_original *
+                         (DESCONTO_CLUBE / 100.0);
+
+        aplicar_desconto(&p->total_pedido,
+                         DESCONTO_CLUBE);
+
+        printf("\nParabens! Desconto do clube aplicado!\n");
+
+    } else {
+
+        printf("\nCliente sem desconto do clube.\n");
+    }
+
+    // Escolha da forma de pagamento
+    printf("\n=================================\n");
+    printf("         FORMAS DE PAGAMENTO\n");
+    printf("=================================\n");
+
+    printf("1 - Dinheiro\n");
+    printf("2 - Pix\n");
+    printf("3 - Cartao de debito\n");
+    printf("4 - Cartao de credito\n");
+
+    do {
+
+        printf("\nEscolha a forma de pagamento: ");
+        scanf("%d", &pagamento);
+        if (pagamento < 1 || pagamento > 4) {
+            printf("Forma de pagamento invalida!\n");
+        }
+
+    } while (pagamento < 1 || pagamento > 4);
+
+    // Processamento do pagamento
+    switch (pagamento) {
+
+        case 1:
+
+            printf("\nPagamento em dinheiro.\n");
+            do {
+                printf("Valor recebido: R$ ");
+                scanf("%f", &valor_recebido);
+                if (valor_recebido < p->total_pedido) {
+                    printf("Valor insuficiente!\n");
+                    printf("Faltam R$ %.2f\n",
+                           p->total_pedido - valor_recebido);
+                }
+
+            } while (valor_recebido < p->total_pedido);
+            troco = valor_recebido - p->total_pedido;
+            break;
+
+        case 2:
+
+            printf("\nPagamento via Pix.\n");
+            printf("Valor a transferir: R$ %.2f\n",
+                   p->total_pedido);
+            troco = 0;
+            break;
+        case 3:
+
+            printf("\nPagamento no cartao de debito.\n");
+            printf("Valor cobrado: R$ %.2f\n",
+                   p->total_pedido);
+            troco = 0;
+            break;
+
+        case 4:
+            printf("\nPagamento no cartao de credito.\n");
+            printf("Valor cobrado: R$ %.2f\n",
+                   p->total_pedido);
+            troco = 0;
+            break;
+    }
+
+    // Resumo final
+    printf("\n=================================\n");
+    printf("       RESUMO DO PAGAMENTO\n");
+    printf("=================================\n");
+
+    printf("Cliente: %s\n", p->cliente);
+
+    printf("Valor original: R$ %.2f\n",
+           valor_original);
+
+    printf("Participante do clube: %s\n",
+           clube == 1 ? "Sim" : "Nao");
+
+    printf("Desconto aplicado: R$ %.2f\n",
+           valor_desconto);
+
+    printf("---------------------------------\n");
+
+    printf("TOTAL A PAGAR: R$ %.2f\n",
+           p->total_pedido);
+
+    if (pagamento == 1) {
+
+        printf("Valor recebido: R$ %.2f\n",
+               valor_recebido);
+        printf("Troco: R$ %.2f\n", troco);
+    }
+
+    printf("---------------------------------\n");
+
+    printf("Status: Pagamento realizado!\n");
+
+    printf("=================================\n");
+}
 
