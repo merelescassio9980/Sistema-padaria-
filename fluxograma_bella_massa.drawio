@@ -1,0 +1,800 @@
+<mxfile host="app.diagrams.net" agent="Dola" pages="6">
+  <diagram id="pg0" name="1 - Visao Geral (main+menu)">
+    <mxGraphModel dx="1100" dy="388" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2339" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="p562_1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" value="Fluxograma - Padaria Bella Massa" vertex="1">
+          <mxGeometry height="50" width="620" x="420" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" value="INICIO&#xa;(main)" vertex="1">
+          <mxGeometry height="56" width="180" x="620" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_4" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Exibir: &quot;SEJA BEM VINDO(A) A BELLA MASSA&quot;" vertex="1">
+          <mxGeometry height="46" width="240" x="590" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_5" parent="1" style="shape=process;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" value="Chamar menu(clientes, &amp;indice, &amp;cadastrado, pedidos, &amp;contador)" vertex="1">
+          <mxGeometry height="50" width="340" x="540" y="325" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_7" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_4" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="710" y="229" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p562_8" edge="1" parent="1" source="p562_4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_5" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_9" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Exibir MENU:&#xa;1-Cadastrar clube  2-Registrar pedido&#xa;3-Relatorio  4-Sair" vertex="1">
+          <mxGeometry height="64" width="260" x="590" y="405" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_10" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Ler opcao (scanf) + getchar()" vertex="1">
+          <mxGeometry height="46" width="240" x="600" y="495" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_11" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" value="switch (opcao)" vertex="1">
+          <mxGeometry height="90" width="200" x="620" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_12" edge="1" parent="1" source="p562_5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_9" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_13" edge="1" parent="1" source="p562_9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_10" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_14" edge="1" parent="1" source="p562_10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_11" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_15" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#555555;" value="case 1" vertex="1">
+          <mxGeometry height="20" width="60" x="350" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_16" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" value="indice &amp;lt; 100 ?" vertex="1">
+          <mxGeometry height="80" width="180" x="360" y="630" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_17" parent="1" style="shape=process;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" value="cadastrarClube(clientes, indice, &amp;cadastrado)" vertex="1">
+          <mxGeometry height="50" width="300" x="120" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_18" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" value="cadastrado == 1 ?" vertex="1">
+          <mxGeometry height="80" width="200" x="360" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="indice++&#xa;cadastrado = 0" vertex="1">
+          <mxGeometry height="50" width="180" x="310" y="1010" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_20" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Exibir: &quot;Limite de clientes atingido!&quot;" vertex="1">
+          <mxGeometry height="46" width="240" x="130" y="830" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_21" edge="1" parent="1" source="p562_11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_16" value="opcao==1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_22" edge="1" parent="1" source="p562_16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_17" value="sim">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_23" edge="1" parent="1" source="p562_17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_18" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_24" edge="1" parent="1" source="p562_18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_19" value="sim">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_25" edge="1" parent="1" source="p562_16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_20" value="nao">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_26" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#555555;" value="case 2" vertex="1">
+          <mxGeometry height="20" width="60" x="940" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_27" parent="1" style="shape=process;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" value="Registrarpedido(...)" vertex="1">
+          <mxGeometry height="50" width="260" x="900" y="630" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_28" parent="1" style="shape=process;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" value="pagamento(&amp;pedidos[contador-1])" vertex="1">
+          <mxGeometry height="50" width="260" x="900" y="705" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_29" parent="1" style="shape=process;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" value="emitir_recibo(&amp;pedidos[contador-1])" vertex="1">
+          <mxGeometry height="50" width="260" x="900" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_30" edge="1" parent="1" source="p562_11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_27" value="opcao==2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_31" edge="1" parent="1" source="p562_27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_28" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_32" edge="1" parent="1" source="p562_28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_29" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_33" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#555555;" value="case 3" vertex="1">
+          <mxGeometry height="20" width="60" x="1240" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_34" parent="1" style="shape=process;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" value="Relatorio(pedidos, contador)" vertex="1">
+          <mxGeometry height="50" width="260" x="1300" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_35" edge="1" parent="1" source="p562_11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_34" value="opcao==3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_36" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#555555;" value="case 4" vertex="1">
+          <mxGeometry height="20" width="60" x="620" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_37" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Exibir: &quot;Saindo do sistema...&quot;" vertex="1">
+          <mxGeometry height="46" width="240" x="590" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_38" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" value="FIM&#xa;(return 0)" vertex="1">
+          <mxGeometry height="56" width="180" x="620" y="805" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_39" edge="1" parent="1" source="p562_11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_37" value="opcao==4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_40" edge="1" parent="1" source="p562_37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_38" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_41" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Exibir: &quot;ERRO! Opcao invalida!&quot;" vertex="1">
+          <mxGeometry height="46" width="240" x="760" y="883" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_42" edge="1" parent="1" source="p562_11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_41" value="default">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_43" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#555555;" value="(volta ao loop do menu)" vertex="1">
+          <mxGeometry height="30" width="200" x="980" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_44" edge="1" parent="1" source="p562_19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_43" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_45" edge="1" parent="1" source="p562_29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_43" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_46" edge="1" parent="1" source="p562_34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_43" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1170" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p562_47" edge="1" parent="1" source="p562_41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_43" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p562_48" edge="1" parent="1" source="p562_43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p562_9" value="repetir while(1)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uXCT6qLQ8plTOm336tGF-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="INICIA O SISTEMA" vertex="1">
+          <mxGeometry height="30" width="130" x="810" y="183" as="geometry" />
+        </mxCell>
+        <mxCell id="uXCT6qLQ8plTOm336tGF-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="EMITE A MENSAGEM DE BOAS VINDAS" vertex="1">
+          <mxGeometry height="30" width="240" x="840" y="263" as="geometry" />
+        </mxCell>
+        <mxCell id="uXCT6qLQ8plTOm336tGF-6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="CHAMA A FUNÇÃO MENU" vertex="1">
+          <mxGeometry height="30" width="180" x="880" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="uXCT6qLQ8plTOm336tGF-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="MOSTRA OS IDs&amp;nbsp; COM SUAS RESPECTIVAS FUNÇÕES" vertex="1">
+          <mxGeometry height="30" width="320" x="830" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="uXCT6qLQ8plTOm336tGF-8" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="LE A OPÇÃO INSERIDA PELO USUARIO" vertex="1">
+          <mxGeometry height="30" width="270" x="825" y="503" as="geometry" />
+        </mxCell>
+        <mxCell id="uXCT6qLQ8plTOm336tGF-9" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;O QUE CADA FUNCAO FAZ NO SWITCH DO MENU:&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;1-CADASTRAR CLIENTE CLUBE&lt;div&gt;2-REGISTRAR PEDIDO&lt;/div&gt;&lt;div&gt;3-RELATORIO DE VENDA&lt;/div&gt;&lt;div&gt;4-SAIR DO SISTEMA&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="210" x="380" y="510" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="pg1" name="2 - cadastrarClube()">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2339" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="p918_1" value="Funcao: cadastrarClube(Cliente_Clube clientes[], int indice, int *cadastrado)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="15" width="700" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p918_2" value="Chamada pela opcao 1 do menu&#xa;ou dentro de Registrarpedido()" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="75" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p918_3" value="Exibir: &quot;CADASTRO CLUBE BELLA MASSA&quot;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="600" y="155" width="260" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="p918_4" value="clientes[indice].codigo = indice + 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="590" y="225" width="280" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="p918_5" value="Ler nome (scanf &quot; %99[^\n]&quot;)&#xa;-&gt; clientes[indice].nome" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="590" y="295" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p918_6" value="Ler CPF (scanf %14s)&#xa;-&gt; clientes[indice].cpf" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="590" y="370" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p918_7" value="Ler telefone (scanf %14s)&#xa;-&gt; clientes[indice].telefone" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="590" y="445" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p918_8" value="*cadastrado = 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="620" y="520" width="220" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="p918_9" value="Exibir: &quot;Cliente cadastrado com sucesso!&quot;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="590" y="590" width="280" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="p918_10" value="Retorno a quem chamou&#xa;(menu ou Registrarpedido)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="665" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p918_11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p918_2" target="p918_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p918_12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p918_3" target="p918_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p918_13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p918_4" target="p918_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p918_14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p918_5" target="p918_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p918_15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p918_6" target="p918_7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p918_16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p918_7" target="p918_8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p918_17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p918_8" target="p918_9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p918_18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p918_9" target="p918_10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="pg2" name="3 - Registrarpedido()">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2339" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="p92_1" value="Funcao: Registrarpedido(...) - registra um pedido (clube/CPF + itens)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="15" width="760" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_2" value="Inicio (chamado pela opcao 2 do menu)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="70" width="300" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_3" value="Perguntar: &quot;Deseja o clube Bella Massa? (1-sim 2-nao)&quot;&#xa;Ler Rclube" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="570" y="150" width="320" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_4" value="Rclube == 1 ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="235" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_2" target="p92_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_3" target="p92_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_7" value="SIM (quer clube)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#555555;" vertex="1" parent="1">
+          <mxGeometry x="200" y="250" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_8" value="indice &gt; 0 ?&#xa;(existe cliente cadastrado?)" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="300" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_9" value="sim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_4" target="p92_8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_10" value="Ler CPF do clube (ccpf)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="80" y="420" width="240" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_11" value="Buscar ccpf em clientes[0..indice-1]&#xa;(strcmp)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="70" y="490" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_12" value="Encontrou ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="575" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_13" value="cpfdig=true | clube_pedido=1&#xa;Copiar nome e CPF do cliente p/ pedido" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="60" y="690" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_14" value="Exibir: &quot;CPF do clube incorreto,&#xa;digite novamente&quot;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="400" y="600" width="240" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_15" value="sim (tem cadastro)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_8" target="p92_10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_10" target="p92_11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_11" target="p92_12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_18" value="sim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_12" target="p92_13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_19" value="nao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_12" target="p92_14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_20" value="repete loop while(1)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_14" target="p92_10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_21" value="NAO (sem cadastro)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#555555;" vertex="1" parent="1">
+          <mxGeometry x="400" y="320" width="140" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_22" value="Exibir: &quot;Vamos cadastrar seu clube...&quot;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="380" y="360" width="260" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_23" value="indice &lt; 1000 ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="435" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_24" value="cadastrarClube(clientes, indice, &amp;cadastrado)" style="shape=process;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="545" width="300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_25" value="cadastrado == 1 ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="625" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_26" value="indice++ | cadastrado=0 | clube_pedido=1&#xa;Copiar nome/CPF do novo cliente p/ pedido" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="360" y="735" width="300" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_27" value="nao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_8" target="p92_22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_22" target="p92_23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_29" value="sim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_23" target="p92_24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_24" target="p92_25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_31" value="sim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_25" target="p92_26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_32" value="NAO (nao quer clube)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#555555;" vertex="1" parent="1">
+          <mxGeometry x="950" y="250" width="140" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_33" value="Perguntar: &quot;Deseja CPF na nota? (1-sim 2-nao)&quot;&#xa;Ler Rncpf" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="920" y="300" width="300" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_34" value="Rncpf == 1 ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="990" y="385" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_35" value="Ler CPF (ncpf)&#xa;strcpy -&gt; pedidos[contador].cpf_nota" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="930" y="485" width="280" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_36" value="nao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_4" target="p92_33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_33" target="p92_34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_38" value="sim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_34" target="p92_35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_39" value="JUNCAO: inicializar pedido&#xa;codigo=contador+1 | quantidades[5]=0&#xa;total_pedido=0 | cpf_nota[0]=&#39;\0&#39;&#xa;clube = clube_pedido" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="600" y="830" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_13" target="p92_39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_26" target="p92_39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_35" target="p92_39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_43" value="nao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_34" target="p92_39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_44" value="LOOP while (continuar == 1)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#555555;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="820" width="180" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_45" value="Exibir lista de produtos:&#xa;1-Pao frances R$0,80  2-Bolo R$8,00&#xa;3-Pao de queijo R$3,00  4-Minipizza R$6,00&#xa;5-Minichurros R$5,00" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="980" y="855" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_46" value="Ler opcao (ID do produto 1-5)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="960" width="260" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_47" value="opcao entre 1 e 5 ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="1035" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_48" value="Exibir: &quot;Produto invalido!&quot;&#xa;(continue -&gt; volta ao loop)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="1050" width="240" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_49" value="Ler quantidade" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="1145" width="240" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_50" value="quantidade &gt; 0 ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="1220" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_51" value="Exibir: &quot;Quantidade invalida!&quot;&#xa;(continue -&gt; volta ao loop)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="1230" width="240" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_52" value="quantidades[opcao-1] += quantidade" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="1320" width="260" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_53" value="switch(opcao): total_pedido +=&#xa;1:qtd*0,80  2:qtd*8,00  3:qtd*3,00&#xa;4:qtd*6,00  5:qtd*5,00" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="1390" width="300" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_54" value="Perguntar: &quot;Adicionar outro produto? (1-sim 2-nao)&quot;&#xa;Ler continuar; se !=1 entao continuar=2" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="990" y="1490" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_55" value="continuar == 1 ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="1580" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_39" target="p92_45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_45" target="p92_46">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_58" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_46" target="p92_47">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_59" value="nao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_47" target="p92_48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_60" value="continue" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_48" target="p92_45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_61" value="sim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_47" target="p92_49">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_62" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_49" target="p92_50">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_63" value="nao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_50" target="p92_51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_64" value="continue" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_51" target="p92_45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_65" value="sim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_50" target="p92_52">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_66" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_52" target="p92_53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_67" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_53" target="p92_54">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_68" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_54" target="p92_55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_69" value="sim (adiciona +1)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_55" target="p92_45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_70" value="Exibir RESUMO DO PEDIDO:&#xa;codigo do pedido + total_pedido&#xa;Exibir: &quot;Pedido registrado com sucesso!&quot;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="600" y="1590" width="320" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_71" value="contador++" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="680" y="1690" width="160" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_72" value="Retorna ao menu&#xa;(em seguida: pagamento() + emitir_recibo())" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="1760" width="320" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_73" value="nao (fim)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_55" target="p92_70">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_74" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_70" target="p92_71">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p92_75" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p92_71" target="p92_72">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="pg3" name="4 - pagamento()">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2339" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="p217_1" value="Funcao: pagamento(pedido *p) - desconto do clube + forma de pagamento" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="15" width="760" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_2" value="Inicio (apos Registrarpedido, opcao 2)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="70" width="300" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_3" value="p == NULL ou total_pedido &lt; 0 ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="155" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_4" value="Exibir: &quot;Erro: pedido invalido!&quot;&#xa;return" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="980" y="175" width="260" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_2" target="p217_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_6" value="sim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_3" target="p217_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_7" value="valor_original = p-&gt;total_pedido&#xa;p-&gt;valor_bruto = valor_original" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="590" y="265" width="300" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_8" value="nao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_3" target="p217_7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_9" value="p-&gt;clube == 1 ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="350" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_7" target="p217_9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_11" value="aplicar_desconto(&amp;total, 5.0)&#xa;total = total - total*5/100&#xa;valor_desconto = original - total" style="shape=process;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="465" width="320" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_12" value="Exibir: &quot;Desconto do clube aplicado!&quot;&#xa;Exibir valor liquido com desconto" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="350" y="565" width="300" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_13" value="sim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_9" target="p217_11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_11" target="p217_12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_15" value="Exibir: &quot;Cliente sem desconto do clube.&quot;&#xa;(valor_desconto permanece 0)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="900" y="475" width="300" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_16" value="nao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_9" target="p217_15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_17" value="p-&gt;valor_liquido = total_pedido&#xa;p-&gt;desconto = valor_desconto" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="600" y="650" width="300" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_12" target="p217_17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_15" target="p217_17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_20" value="Exibir FORMAS DE PAGAMENTO:&#xa;1-Dinheiro  2-Pix&#xa;3-Cartao debito  4-Cartao credito" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="600" y="730" width="300" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_21" value="Ler forma_pagamento&#xa;(se scanf falhar: limpar buffer)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="610" y="830" width="280" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_22" value="forma_pagamento entre 1 e 4 ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="915" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_23" value="Exibir: &quot;Forma de pagamento invalida!&quot;&#xa;(repete do-while)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="980" y="930" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_17" target="p217_20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_20" target="p217_21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_21" target="p217_22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_27" value="nao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_22" target="p217_23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_28" value="repete" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_23" target="p217_21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_29" value="p-&gt;forma_pagamento = forma_pagamento" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="620" y="1025" width="280" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_30" value="sim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_22" target="p217_29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_31" value="switch (forma_pagamento)" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="1100" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_29" target="p217_31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_33" value="CASO 1 - Dinheiro:&#xa;Ler valor_recebido&#xa;(se invalido: limpa buffer, repete)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="120" y="1230" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_34" value="valor_recebido &gt;= total_pedido ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="1325" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_35" value="Exibir: &quot;Valor insuficiente!&#xa;Faltam R$ (total - recebido)&quot;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1440" width="280" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_36" value="troco = valor_recebido - total_pedido" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1525" width="260" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_37" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_31" target="p217_33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_33" target="p217_34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_39" value="nao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_34" target="p217_35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_40" value="repete" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_35" target="p217_33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_41" value="sim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_34" target="p217_36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_42" value="CASO 2 - Pix:&#xa;Exibir valor a transferir = total" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="460" y="1230" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_43" value="CASO 3 - Cartao debito:&#xa;Exibir valor cobrado = total" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="780" y="1230" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_44" value="CASO 4 - Cartao credito:&#xa;Exibir valor cobrado = total" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="1230" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_45" value="2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_31" target="p217_42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_46" value="3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_31" target="p217_43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_47" value="4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_31" target="p217_44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_48" value="Exibir RESUMO DO PAGAMENTO:&#xa;valor original | participante do clube (sim/nao)&#xa;desconto aplicado | TOTAL A PAGAR&#xa;(se dinheiro: valor recebido + troco)&#xa;Status: Pagamento realizado!" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="560" y="1600" width="360" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_36" target="p217_48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_42" target="p217_48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_51" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_43" target="p217_48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_44" target="p217_48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_53" value="Retorna ao menu&#xa;(em seguida: emitir_recibo())" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="1740" width="280" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p217_54" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p217_48" target="p217_53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="pg4" name="5 - emitir_recibo()">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2339" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="p733_1" value="Funcao: emitir_recibo(pedido *p) - imprime o recibo" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="15" width="680" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_2" value="Inicio (apos pagamento, opcao 2)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="70" width="300" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_3" value="p == NULL ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="150" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_4" value="Exibir: &quot;Nao foi possivel emitir o recibo.&quot;&#xa;return" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="940" y="160" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p733_2" target="p733_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_6" value="sim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p733_3" target="p733_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_7" value="Exibir cabecalho:&#xa;PADARIA BELLA MASSA - RECIBO DE PAGAMENTO&#xa;Recibo numero (static, ++) + Pedido numero" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="580" y="250" width="320" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_8" value="nao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p733_3" target="p733_7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_9" value="p-&gt;clube == 1 ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="350" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p733_7" target="p733_9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_11" value="Exibir: CLIENTE CLUBE BELLA MASSA&#xa;Nome (p-&gt;nome_cliente) + CPF (p-&gt;cpf_cliente)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="320" y="465" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_12" value="sim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p733_9" target="p733_11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_13" value="cpf_nota[0] != &#39;\0&#39; ?&#xa;(tem CPF na nota?)" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="940" y="370" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_14" value="Exibir: CPF NA NOTA = p-&gt;cpf_nota" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="940" y="485" width="280" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_15" value="nao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p733_9" target="p733_13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_16" value="sim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p733_13" target="p733_14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_17" value="Exibir: PRODUTOS COMPRADOS&#xa;Loop i=0..4: se quantidades[i]&gt;0&#xa;imprime produto[i] + unidades" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="600" y="565" width="320" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p733_11" target="p733_17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p733_14" target="p733_17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_20" value="nao (sem dados cliente)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p733_13" target="p733_17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_21" value="Exibir valores:&#xa;Valor bruto (p-&gt;valor_bruto)&#xa;Desconto aplicado (p-&gt;desconto)&#xa;Valor liquido (p-&gt;valor_liquido)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="600" y="665" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_22" value="Exibir forma de pagamento:&#xa;formas_pagamento[p-&gt;forma_pagamento - 1]&#xa;(Dinheiro/Pix/Debito/Credito)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="600" y="775" width="320" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_23" value="Exibir: TOTAL PAGO = valor_liquido&#xa;Exibir: &quot;OBRIGADO PELA PREFERENCIA!&quot;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="600" y="875" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_24" value="Retorna ao menu (loop while(1))" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="965" width="280" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p733_17" target="p733_21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p733_21" target="p733_22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p733_22" target="p733_23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p733_28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p733_23" target="p733_24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="pg5" name="6 - Relatorio()">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2339" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="p6_1" value="Funcao: Relatorio(pedido pedidos[], int contador) - relatorio de vendas" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="15" width="760" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_2" value="Inicio (opcao 3 do menu)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="70" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_3" value="contador == 0 ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="150" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_4" value="Exibir: &quot;Nenhum pedido foi realizado ainda.&quot;&#xa;return" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="940" y="165" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p6_2" target="p6_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_6" value="sim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p6_3" target="p6_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_7" value="Inicializar:&#xa;faturamento_total = 0&#xa;total_produtos[5] = {0}" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="600" y="260" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_8" value="nao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p6_3" target="p6_7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_9" value="Loop i = 0 .. contador-1&#xa;(cada pedido)" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="610" y="350" width="240" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p6_7" target="p6_9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_11" value="faturamento_total += pedidos[i].total_pedido" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="580" y="435" width="300" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_12" value="Loop j = 0..4:&#xa;total_produtos[j] += pedidos[i].quantidades[j]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="580" y="510" width="300" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p6_9" target="p6_11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p6_11" target="p6_12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_15" value="proximo pedido" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p6_12" target="p6_9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_16" value="Exibir:&#xa;Total de pedidos realizados = contador&#xa;Faturamento total = R$ faturamento_total" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="580" y="600" width="320" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_17" value="Exibir VENDAS POR PRODUTO:&#xa;1-Pao frances: total_produtos[0]&#xa;2-Bolo: total_produtos[1]&#xa;3-Pao de queijo: total_produtos[2]&#xa;4-Minipizza: total_produtos[3]&#xa;5-Minichurros: total_produtos[4]" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="580" y="700" width="320" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_18" value="Retorna ao menu (loop while(1))" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="860" width="280" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_19" value="fim do loop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p6_9" target="p6_16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p6_16" target="p6_17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p6_17" target="p6_18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
