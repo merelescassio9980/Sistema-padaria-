@@ -1,1 +1,307 @@
+//Usa o mesmo codigo do pragamento e desconto, só adiciona a aparte do Recibo e o include time
+
+#include <stdio.h>
+#include <time.h>
+
+// Desconto do Clube da Padaria
+#define DESCONTO_CLUBE 5.0
+
+// Estrutura do pedido
+typedef struct {
+    int codigo;
+    char cliente[50];
+    int quantidades[5];
+    float total_pedido;
+    int status;
+} pedido;
+
+// Estrutura das informações de pagamento
+typedef struct {
+    int clube;
+    int forma_pagamento;
+    float valor_original;
+    float valor_desconto;
+    float valor_recebido;
+    float troco;
+} pagamento_info;
+
+// Função para limpar o buffer de entrada
+void limpar_buffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+// Função para ler números inteiros
+int ler_inteiro() {
+    int valor;
+
+    while (scanf("%d", &valor) != 1) {
+        printf("Entrada invalida! Digite novamente: ");
+        limpar_buffer();
+    }
+
+    limpar_buffer();
+    return valor;
+}
+
+// Função para ler valores monetários
+float ler_valor() {
+    float valor;
+
+    while (scanf("%f", &valor) != 1 || valor < 0) {
+        printf("Valor invalido! Digite novamente: ");
+        limpar_buffer();
+    }
+
+    limpar_buffer();
+    return valor;
+}
+
+// Função para aplicar desconto
+void aplicar_desconto(float *total, float percentual) {
+    *total = *total - (*total * percentual / 100.0);
+}
+
+// Função de processamento do pagamento
+void processar_pagamento(pedido *p, pagamento_info *pag) {
+
+    if (p == NULL || pag == NULL || p->total_pedido < 0) {
+        printf("Erro: pedido invalido!\n");
+        return;
+    }
+
+    pag->valor_original = p->total_pedido;
+    pag->valor_desconto = 0;
+    pag->valor_recebido = 0;
+    pag->troco = 0;
+
+    printf("\n=================================\n");
+    printf("       CLUBE DA PADARIA\n");
+    printf("=================================\n");
+
+    // Verificação do clube
+    do {
+        printf("\nO cliente participa do clube?\n");
+        printf("1 - Sim\n");
+        printf("2 - Nao\n");
+        printf("Opcao: ");
+
+        pag->clube = ler_inteiro();
+
+        if (pag->clube != 1 && pag->clube != 2) {
+            printf("Opcao invalida!\n");
+        }
+
+    } while (pag->clube != 1 && pag->clube != 2);
+
+    // Aplicação do desconto
+    if (pag->clube == 1) {
+
+        aplicar_desconto(&p->total_pedido,
+                         DESCONTO_CLUBE);
+
+        pag->valor_desconto =
+            pag->valor_original - p->total_pedido;
+
+        printf("\nDesconto de 5%% aplicado!\n");
+
+    } else {
+
+        printf("\nCliente sem desconto.\n");
+    }
+
+    // Formas de pagamento
+    printf("\n=================================\n");
+    printf("       FORMAS DE PAGAMENTO\n");
+    printf("=================================\n");
+
+    printf("1 - Dinheiro\n");
+    printf("2 - Pix\n");
+    printf("3 - Cartao de debito\n");
+    printf("4 - Cartao de credito\n");
+
+    do {
+        printf("\nEscolha a forma de pagamento: ");
+        pag->forma_pagamento = ler_inteiro();
+
+        if (pag->forma_pagamento < 1 ||
+            pag->forma_pagamento > 4) {
+            printf("Forma de pagamento invalida!\n");
+        }
+
+    } while (pag->forma_pagamento < 1 ||
+             pag->forma_pagamento > 4);
+
+    // Processamento do pagamento
+    switch (pag->forma_pagamento) {
+
+        case 1:
+
+            printf("\nPagamento em dinheiro.\n");
+
+            do {
+                printf("Valor recebido: R$ ");
+                pag->valor_recebido = ler_valor();
+
+                if (pag->valor_recebido < p->total_pedido) {
+                    printf("Valor insuficiente!\n");
+                    printf("Faltam R$ %.2f\n",
+                           p->total_pedido - pag->valor_recebido);
+                }
+
+            } while (pag->valor_recebido < p->total_pedido);
+
+            pag->troco =
+                pag->valor_recebido - p->total_pedido;
+
+            break;
+
+        case 2:
+
+            printf("\nPagamento via Pix.\n");
+            printf("Valor: R$ %.2f\n", p->total_pedido);
+            break;
+
+        case 3:
+
+            printf("\nPagamento no cartao de debito.\n");
+            printf("Valor: R$ %.2f\n", p->total_pedido);
+            break;
+
+        case 4:
+
+            printf("\nPagamento no cartao de credito.\n");
+            printf("Valor: R$ %.2f\n", p->total_pedido);
+            break;
+    }
+
+    // Atualização do status
+    p->status = 1;
+
+    printf("\nPagamento processado com sucesso!\n");
+}
+
+// Função para emitir o recibo
+void emitir_recibo(pedido *p, pagamento_info *pag) {
+
+    time_t agora;
+    struct tm *data_hora;
+    static int numero_recibo = 1;
+
+    if (p == NULL || pag == NULL || p->status != 1) {
+        printf("\nNao foi possivel emitir o recibo.\n");
+        return;
+    }
+
+    // Obtendo data e horário
+    agora = time(NULL);
+    data_hora = localtime(&agora);
+
+    printf("\n\n");
+    printf("========================================\n");
+    printf("           PADARIA DO BAIRRO\n");
+    printf("         RECIBO DE PAGAMENTO\n");
+    printf("========================================\n");
+
+    printf("Recibo numero: %04d\n", numero_recibo++);
+    printf("Pedido numero: %d\n", p->codigo);
+
+    printf("Data: %02d/%02d/%04d\n",
+           data_hora->tm_mday,
+           data_hora->tm_mon + 1,
+           data_hora->tm_year + 1900);
+
+    printf("Horario: %02d:%02d:%02d\n",
+           data_hora->tm_hour,
+           data_hora->tm_min,
+           data_hora->tm_sec);
+
+    printf("----------------------------------------\n");
+
+    printf("CLIENTE: %s\n", p->cliente);
+
+    printf("----------------------------------------\n");
+
+    printf("Valor original:       R$ %8.2f\n",
+           pag->valor_original);
+
+    printf("Desconto do clube:    R$ %8.2f\n",
+           pag->valor_desconto);
+
+    printf("----------------------------------------\n");
+
+    printf("TOTAL PAGO:           R$ %8.2f\n",
+           p->total_pedido);
+
+    printf("----------------------------------------\n");
+
+    printf("Forma de pagamento: ");
+
+    switch (pag->forma_pagamento) {
+
+        case 1:
+            printf("Dinheiro\n");
+            printf("Valor recebido:       R$ %8.2f\n",
+                   pag->valor_recebido);
+            printf("Troco:                R$ %8.2f\n",
+                   pag->troco);
+            break;
+
+        case 2:
+            printf("Pix\n");
+            break;
+
+        case 3:
+            printf("Cartao de debito\n");
+            break;
+
+        case 4:
+            printf("Cartao de credito\n");
+            break;
+    }
+
+    printf("----------------------------------------\n");
+
+    printf("Participante do clube: %s\n",
+           pag->clube == 1 ? "Sim" : "Nao");
+
+    printf("Status: PAGAMENTO REALIZADO\n");
+
+    printf("========================================\n");
+    printf("       OBRIGADO PELA PREFERENCIA!\n");
+    printf("========================================\n");
+
+}
+
+// FUNÇÃO PRINCIPAL
+int main() {
+
+    pedido novo_pedido;
+    pagamento_info pagamento;
+
+    printf("=================================\n");
+    printf("       SISTEMA DA PADARIA\n");
+    printf("=================================\n");
+
+    // Cadastro do pedido
+    printf("\nDigite o codigo do pedido: ");
+    novo_pedido.codigo = ler_inteiro();
+
+    printf("Digite o nome do cliente: ");
+    scanf(" %49[^\n]", novo_pedido.cliente);
+    limpar_buffer();
+
+    printf("Digite o valor total do pedido: R$ ");
+    novo_pedido.total_pedido = ler_valor();
+
+    novo_pedido.status = 0;
+
+    // Processamento do pagamento
+    processar_pagamento(&novo_pedido, &pagamento);
+
+    // Emissão automática do recibo
+    emitir_recibo(&novo_pedido, &pagamento);
+
+    return 0;
+}
 
