@@ -19,6 +19,18 @@ typedef struct pedido {
     int quantidades[5];
     float total_pedido;
     int clube;
+
+    // DADOS PARA O RECIBO
+    char cpf_nota[15];
+    char nome_cliente[100];
+    char cpf_cliente[15];
+
+    float valor_bruto;
+    float valor_liquido;
+    float desconto;
+
+    int forma_pagamento;
+
 } pedido;
 
 // PROTOTIPOS
@@ -40,6 +52,11 @@ void pagamento(pedido *p);
 
 void Relatorio(pedido pedidos[], int contador);
 
+void emitir_recibo(pedido *p);
+
+void aplicar_desconto(float *total, float percentual);
+
+
 // FUNCAO MENU
 void menu(Cliente_Clube clientes[], int *indice, int *cadastrado,
           pedido pedidos[], int *contador) {
@@ -52,7 +69,7 @@ void menu(Cliente_Clube clientes[], int *indice, int *cadastrado,
 
         printf("\n1 - Cadastrar pedido\n");
         printf("\n2 - Registrar Pedido\n");
-        printf("\n3 - Mostrar Relatório\n");
+        printf("\n3 - Mostrar Relatorio\n");
         printf("\n4 - Sair\n");
         printf("\n====================================");
         printf("\nEscolha uma opcao: ");
@@ -63,20 +80,25 @@ void menu(Cliente_Clube clientes[], int *indice, int *cadastrado,
         switch (opcao) {
 
             case 1:
+
                 // Cadastrar clube
-                if (*indice < 100) {
+                if (*indice < 1000) {
+
                     cadastrarClube(clientes, *indice, cadastrado);
 
                     if (*cadastrado == 1) {
                         (*indice)++;
                         *cadastrado = 0;
                     }
+
                 } else {
                     printf("\nLimite de clientes atingido!");
                 }
+
                 break;
 
             case 2:
+
                 // Registrar pedido
                 Registrarpedido(clientes, indice, cadastrado,
                     (char[15]){0}, false, 0, (char[15]){0},
@@ -84,24 +106,32 @@ void menu(Cliente_Clube clientes[], int *indice, int *cadastrado,
 
                 pagamento(&pedidos[*contador - 1]);
 
+                emitir_recibo(&pedidos[*contador - 1]);
+
                 break;
 
             case 3:
-                // Mostrar relatório
+
+                // Mostrar relatorio
                 Relatorio(pedidos, *contador);
+
                 break;
 
             case 4:
+
                 // Sair do sistema
                 printf("\nSaindo do sistema...\n");
                 return;
 
             default:
+
                 printf("\nERRO! Opcao invalida!\n");
+
                 break;
         }
     }
 }
+
 
 // FUNCAO DE CADASTRO DO CLUBE
 void cadastrarClube(Cliente_Clube clientes[], int indice, int *cadastrado) {
@@ -123,6 +153,7 @@ void cadastrarClube(Cliente_Clube clientes[], int indice, int *cadastrado) {
 
     printf("\nCliente cadastrado com sucesso!\n");
 }
+
 
 // FUNCAO REGISTRAR PEDIDO
 void Registrarpedido(
@@ -163,9 +194,19 @@ void Registrarpedido(
                 for (int i = 0; i < *indice; i++) {
 
                     if (strcmp(ccpf, clientes[i].cpf) == 0) {
+
                         printf("\nClube inserido no pedido!\n");
+
                         cpfdig = true;
                         clube_pedido = 1;
+
+                        // Armazena os dados do cliente no pedido
+                        strcpy(pedidos[*contador].nome_cliente,
+                               clientes[i].nome);
+
+                        strcpy(pedidos[*contador].cpf_cliente,
+                               clientes[i].cpf);
+
                         break;
                     }
                 }
@@ -182,19 +223,30 @@ void Registrarpedido(
             printf("\nVamos cadastrar seu clube...\n");
 
             if (*indice < 1000) {
+
                 cadastrarClube(clientes, *indice, cadastrado);
 
                 if (*cadastrado == 1) {
+
                     (*indice)++;
+
                     *cadastrado = 0;
+
                     clube_pedido = 1;
+
+                    // Armazena os dados do novo cliente
+                    strcpy(pedidos[*contador].nome_cliente,
+                           clientes[*indice - 1].nome);
+
+                    strcpy(pedidos[*contador].cpf_cliente,
+                           clientes[*indice - 1].cpf);
                 }
             }
         }
 
     } else {
 
-        // Se o cliente não quiser o clube, pode colocar CPF na nota
+        // Se o cliente nao quiser o clube, pode colocar CPF na nota
         printf("\nDeseja colocar o CPF na nota? (1-sim 2-nao): ");
         scanf("%d", &Rncpf);
 
@@ -202,6 +254,9 @@ void Registrarpedido(
 
             printf("\nDigite o seu CPF: ");
             scanf("%14s", ncpf);
+
+            // Armazena o CPF para o recibo
+            strcpy(pedidos[*contador].cpf_nota, ncpf);
         }
     }
 
@@ -214,6 +269,9 @@ void Registrarpedido(
     }
 
     pedidos[*contador].total_pedido = 0;
+
+    // Inicializa os dados do recibo
+    pedidos[*contador].cpf_nota[0] = '\0';
 
     // Registra se o cliente participa do clube
     pedidos[*contador].clube = clube_pedido;
@@ -295,10 +353,13 @@ void Registrarpedido(
     (*contador)++;
 }
 
+
 // FUNCAO PARA APLICAR DESCONTO
 void aplicar_desconto(float *total, float percentual) {
+
     *total = *total - (*total * percentual / 100.0);
 }
+
 
 // MODULO DE PAGAMENTO E DESCONTO
 void pagamento(pedido *p) {
@@ -316,11 +377,14 @@ void pagamento(pedido *p) {
 
     valor_original = p->total_pedido;
 
+    // Armazena o valor bruto
+    p->valor_bruto = valor_original;
+
     printf("\n=================================\n");
     printf("       CLUBE PADARIA\n");
     printf("=================================\n");
 
-    // Verificação automática do clube
+    // Verificacao automatica do clube
     if (p->clube == 1) {
 
         aplicar_desconto(&p->total_pedido,
@@ -329,6 +393,7 @@ void pagamento(pedido *p) {
         valor_desconto = valor_original - p->total_pedido;
 
         printf("\nParabens! Desconto do clube aplicado!\n");
+
         printf("Valor liquido com desconto: R$ %.2f\n",
                p->total_pedido);
 
@@ -336,6 +401,10 @@ void pagamento(pedido *p) {
 
         printf("\nCliente sem desconto do clube.\n");
     }
+
+    // Armazena os valores para o recibo
+    p->valor_liquido = p->total_pedido;
+    p->desconto = valor_desconto;
 
     // Escolha da forma de pagamento
     printf("\n=================================\n");
@@ -348,11 +417,15 @@ void pagamento(pedido *p) {
     printf("4 - Cartao de credito\n");
 
     do {
+
         printf("\nEscolha a forma de pagamento: ");
 
         if (scanf("%d", &forma_pagamento) != 1) {
+
             printf("Entrada invalida!\n");
+
             while (getchar() != '\n');
+
             forma_pagamento = 0;
         }
 
@@ -362,6 +435,9 @@ void pagamento(pedido *p) {
 
     } while (forma_pagamento < 1 || forma_pagamento > 4);
 
+    // Armazena a forma de pagamento
+    p->forma_pagamento = forma_pagamento;
+
     // Processamento do pagamento
     switch (forma_pagamento) {
 
@@ -370,17 +446,24 @@ void pagamento(pedido *p) {
             printf("\nPagamento em dinheiro.\n");
 
             do {
+
                 printf("Valor recebido: R$ ");
 
                 if (scanf("%f", &valor_recebido) != 1) {
+
                     printf("Valor invalido!\n");
+
                     while (getchar() != '\n');
+
                     valor_recebido = -1;
+
                     continue;
                 }
 
                 if (valor_recebido < p->total_pedido) {
+
                     printf("Valor insuficiente!\n");
+
                     printf("Faltam R$ %.2f\n",
                            p->total_pedido - valor_recebido);
                 }
@@ -388,27 +471,34 @@ void pagamento(pedido *p) {
             } while (valor_recebido < p->total_pedido);
 
             troco = valor_recebido - p->total_pedido;
+
             break;
 
         case 2:
 
             printf("\nPagamento via Pix.\n");
+
             printf("Valor a transferir: R$ %.2f\n",
                    p->total_pedido);
+
             break;
 
         case 3:
 
             printf("\nPagamento no cartao de debito.\n");
+
             printf("Valor cobrado: R$ %.2f\n",
                    p->total_pedido);
+
             break;
 
         case 4:
 
             printf("\nPagamento no cartao de credito.\n");
+
             printf("Valor cobrado: R$ %.2f\n",
                    p->total_pedido);
+
             break;
     }
 
@@ -446,10 +536,97 @@ void pagamento(pedido *p) {
     printf("=================================\n");
 }
 
-// EMITIR NOTA
-void emitirNota() {
 
+// FUNCAO PARA EMITIR O RECIBO
+void emitir_recibo(pedido *p) {
+
+    static int numero_recibo = 1;
+
+    if (p == NULL) {
+        printf("\nNao foi possivel emitir o recibo.\n");
+        return;
+    }
+
+    char *produtos[5] = {
+        "Pao frances",
+        "Bolo",
+        "Pao de queijo",
+        "Minipizza",
+        "Minichurros"
+    };
+
+    char *formas_pagamento[4] = {
+        "Dinheiro",
+        "Pix",
+        "Cartao de debito",
+        "Cartao de credito"
+    };
+
+    printf("\n");
+    printf("========================================\n");
+    printf("          PADARIA BELLA MASSA\n");
+    printf("          RECIBO DE PAGAMENTO\n");
+    printf("========================================\n");
+
+    printf("Recibo numero: %04d\n", numero_recibo++);
+    printf("Pedido numero: %d\n", p->codigo);
+
+    printf("----------------------------------------\n");
+
+    // DADOS DO CLIENTE
+    if (p->clube == 1) {
+
+        printf("CLIENTE CLUBE BELLA MASSA\n");
+        printf("Nome: %s\n", p->nome_cliente);
+        printf("CPF: %s\n", p->cpf_cliente);
+
+    } else if (p->cpf_nota[0] != '\0') {
+
+        printf("CPF NA NOTA: %s\n", p->cpf_nota);
+    }
+
+    printf("----------------------------------------\n");
+    printf("PRODUTOS COMPRADOS:\n");
+
+    // Lista os produtos e suas quantidades
+    for (int i = 0; i < 5; i++) {
+
+        if (p->quantidades[i] > 0) {
+
+            printf("%-20s %d unidades\n",
+                   produtos[i],
+                   p->quantidades[i]);
+        }
+    }
+
+    printf("----------------------------------------\n");
+
+    // VALORES DO PEDIDO
+    printf("Valor bruto: R$ %.2f\n",
+           p->valor_bruto);
+
+    printf("Desconto aplicado: R$ %.2f\n",
+           p->desconto);
+
+    printf("Valor liquido: R$ %.2f\n",
+           p->valor_liquido);
+
+    printf("----------------------------------------\n");
+
+    // FORMA DE PAGAMENTO
+    printf("Forma de pagamento: %s\n",
+           formas_pagamento[p->forma_pagamento - 1]);
+
+    printf("----------------------------------------\n");
+
+    printf("TOTAL PAGO: R$ %.2f\n",
+           p->valor_liquido);
+
+    printf("----------------------------------------\n");
+    printf("       OBRIGADO PELA PREFERENCIA!\n");
+    printf("========================================\n");
 }
+
 
 // RELATORIO DE VENDAS
 void Relatorio(pedido pedidos[], int contador) {
@@ -490,6 +667,7 @@ void Relatorio(pedido pedidos[], int contador) {
     printf("\n================================\n");
 }
 
+
 // MAIN
 int main() {
 
@@ -502,7 +680,7 @@ int main() {
 
     printf("====== SEJA BEM VINDO(A) A BELLA MASSA ======\n");
 
-    // Chama a função menu
+    // Chama a funcao menu
     menu(clientes, &indice, &cadastrado, pedidos, &contador);
 
     return 0;
