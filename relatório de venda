@@ -1,1 +1,340 @@
 
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+
+// ESTRUTURA DO CLIENTE
+typedef struct Cliente_Clube {
+    int codigo;
+    char nome[100];
+    char cpf[15];
+    char telefone[15];
+} Cliente_Clube;
+
+// ESTRUTURA DO PEDIDO
+typedef struct pedido {
+    int codigo;
+    int quantidades[5];
+    float total_pedido;
+} pedido;
+
+// PROTOTIPOS
+void cadastrarClube(Cliente_Clube clientes[], int indice, int *cadastrado);
+
+void Registrarpedido(
+    Cliente_Clube clientes[],
+    int *indice,
+    int *cadastrado,
+    char ccpf[15],
+    bool cpfdig,
+    int Rncpf,
+    char ncpf[15],
+    pedido pedidos[],
+    int *contador
+);
+void Relatorio(pedido pedidos[], int contador);
+
+// FUNCAO MENU
+void menu(Cliente_Clube clientes[], int *indice, int *cadastrado,
+          pedido pedidos[], int *contador) {
+
+    printf("========== MENU PRINCIPAL ==========");
+
+    while (1) {
+
+        int opcao;
+
+        printf("\n1 - Cadastrar pedido\n");
+        printf("\n2 - Registrar Pedido\n");
+        printf("\n3 - Mostrar Relatório\n");
+        printf("\n4 - Sair\n");
+        printf("\n====================================");
+        printf("\nEscolha uma opcao: ");
+
+        scanf("%d", &opcao);
+        getchar();
+
+        switch (opcao) {
+
+            case 1:
+                //cadastrar clube
+                if (*indice < 100) {
+                    cadastrarClube(clientes, *indice, cadastrado);
+
+                    if (*cadastrado == 1) {
+                        (*indice)++;
+                        *cadastrado = 0;
+                    }
+                } else {
+                    printf("\nLimite de clientes atingido!");
+                }
+                break;
+
+            case 2:
+                //regitrar pedido
+                Registrarpedido(clientes, indice, cadastrado,(char[15]){0},false,0,(char[15]){0},pedidos,contador);
+                pagamento();
+                break;
+
+            case 3:
+                Relatorio(pedidos, *contador);
+                break;
+
+            case 4:
+                //sair (sair do sistema)
+                printf("\nSaindo do sistema...\n");
+                return;
+
+            default:
+                printf("\nERRO! Opcao invalida!\n");
+                break;
+        }
+    }
+}
+
+// FUNCAO DE CADASTRO DO CLUBE
+void cadastrarClube(Cliente_Clube clientes[], int indice, int *cadastrado) {
+
+    printf("\n====== CADASTRO CLUBE BELLA MASSA ======\n");
+
+    clientes[indice].codigo = indice + 1;
+
+    printf("Digite seu nome: ");
+    scanf(" %99[^\n]", clientes[indice].nome);
+
+    printf("Digite seu CPF: ");
+    scanf("%14s", clientes[indice].cpf);
+
+    printf("Digite seu telefone: ");
+    scanf("%14s", clientes[indice].telefone);
+
+    *cadastrado = 1;
+
+    printf("\nCliente cadastrado com sucesso!\n");
+}
+
+// FUNCAO REGISTRAR PEDIDO
+void Registrarpedido(
+    Cliente_Clube clientes[],
+    int *indice,
+    int *cadastrado,
+    char ccpf[15],
+    bool cpfdig,
+    int Rncpf,
+    char ncpf[15],
+    pedido pedidos[],
+    int *contador
+) {
+
+    int Rclube;
+    int opcao, quantidade;
+    int continuar = 1;
+
+    //pergunta se o cliente quer o clube da padaria
+    printf("\nDeseja por o clube da padaria Bella Massa? (1-sim 2-nao): ");
+    scanf("%d", &Rclube);
+    
+    if (Rclube == 1) {
+        //verifica se o cliente tem clube, se não tiver o clube automaticamente ira para a função cadastrar clube
+        if (*indice > 0) {
+
+            //pede para digitar o cpf do clube
+            printf("\nDigite o CPF do clube: ");
+
+            //verifica se o cpf do clube está digitado corretamente
+            while (1) {
+
+                scanf("%14s", ccpf);
+
+                cpfdig = false;
+                
+                for (int i = 0; i < *indice; i++) {
+
+                    if (strcmp(ccpf, clientes[i].cpf) == 0) {
+                        printf("\nClube inserido no pedido!\n");
+                        cpfdig = true;
+                        break;
+                    }
+                }
+
+                if (cpfdig == true) {
+                    break;
+                } else {
+                    printf("\nSeu CPF do clube esta incorreto, digite novamente: ");
+                }
+            }
+
+        } else {
+
+            printf("\nVamos cadastrar seu clube...\n");
+
+            if (*indice < 1000) {
+                cadastrarClube(clientes, *indice, cadastrado);
+
+                if (*cadastrado == 1) {
+                    (*indice)++;
+                    *cadastrado = 0;
+                }
+            }
+        }
+
+    } else {
+        //se o cliente não quiser o clube ele pode digitar o cpf na nota
+        printf("\nDeseja colocar o CPF na nota? (1-sim 2-nao): ");
+        scanf("%d", &Rncpf);
+
+        if (Rncpf == 1) {
+
+            printf("\nDigite o seu CPF: ");
+            scanf("%14s", ncpf);
+        }
+    }
+
+    printf("\nCadastrar pedido - Bella Massa\n");
+
+    pedidos[*contador].codigo = *contador + 1;
+
+    for (int i = 0; i < 5; i++) {
+        pedidos[*contador].quantidades[i] = 0;
+    }
+
+    pedidos[*contador].total_pedido = 0;
+
+    while (continuar == 1) {
+
+        //lista dos produtos
+        printf("\nProdutos:\n");
+        printf("1 - Pao frances (R$ 0,80)\n");
+        printf("2 - Bolo (R$ 8,00)\n");
+        printf("3 - Pao de queijo (R$ 3,00)\n");
+        printf("4 - Minipizza (R$ 6,00)\n");
+        printf("5 - Minichurros (R$ 5,00)\n");
+
+        printf("\nDigite o ID do produto (1-5): ");
+        scanf("%d", &opcao);
+
+        //impede o usuario inserir o id errado
+        if (opcao < 1 || opcao > 5) {
+            printf("Produto invalido!\n");
+            continue;
+        }
+
+        printf("Digite a quantidade: ");
+        scanf("%d", &quantidade);
+
+        if (quantidade <= 0) {
+            printf("Quantidade invalida!\n");
+            continue;
+        }
+
+        //calcula o valor da compra
+        pedidos[*contador].quantidades[opcao - 1] += quantidade;
+
+        switch (opcao) {
+
+            case 1:
+                pedidos[*contador].total_pedido += quantidade * 0.80;
+                break;
+
+            case 2:
+                pedidos[*contador].total_pedido += quantidade * 8.00;
+                break;
+
+            case 3:
+                pedidos[*contador].total_pedido += quantidade * 3.00;
+                break;
+
+            case 4:
+                pedidos[*contador].total_pedido += quantidade * 6.00;
+                break;
+
+            case 5:
+                pedidos[*contador].total_pedido += quantidade * 5.00;
+                break;
+        }
+
+        //pergunta se deseja adicionar mais um produto
+        printf("\nDeseja adicionar outro produto?\n");
+        printf("1 - Sim\n");
+        printf("2 - Nao\n");
+        printf("Opcao: ");
+        scanf("%d", &continuar);
+
+        if (continuar != 1) {
+            continuar = 2;
+        }
+    }
+
+    printf("\n====== RESUMO DO PEDIDO ======\n");
+
+    printf("Codigo do pedido: %d\n",
+           pedidos[*contador].codigo);
+
+    printf("Total do pedido: R$ %.2f\n",
+           pedidos[*contador].total_pedido);
+
+    printf("\nPedido registrado com sucesso!\n");
+
+    (*contador)++;
+}
+
+//pagamento
+void pagamento(){
+
+}
+
+//emitir nota
+void emitirNota(){
+
+}
+
+//relatorio de vendas
+void Relatorio(pedido pedidos[], int contador) {
+    printf("\n====== RELATORIO DE VENDAS ======\n");
+
+    if (contador == 0) {
+        printf("Nenhum pedido foi realizado ainda.\n");
+        return;
+    }
+
+    float faturamento_total = 0.0f;
+    int total_produtos[5] = {0, 0, 0, 0, 0};
+
+    // Percorre todos os pedidos ja realizados (de 0 ate contador - 1)
+    for (int i = 0; i < contador; i++) {
+        faturamento_total += pedidos[i].total_pedido;
+
+        for (int j = 0; j < 5; j++) {
+            total_produtos[j] += pedidos[i].quantidades[j];
+        }
+    }
+
+    printf("Total de pedidos realizados: %d\n", contador);
+    printf("Total de vendas: R$ %.2f\n", faturamento_total);
+    printf("====== VENDAS POR PRODUTO ==========\n");
+    printf("1 - Pao frances: %d unidades\n", total_produtos[0]);
+    printf("2 - Bolo: %d unidades\n", total_produtos[1]);
+    printf("3 - Pao de queijo: %d unidades\n", total_produtos[2]);
+    printf("4 - Minipizza: %d unidades\n", total_produtos[3]);
+    printf("5 - Minichurros: %d unidades\n", total_produtos[4]);
+}
+
+
+
+// MAIN
+int main() {
+
+    Cliente_Clube clientes[1000];
+    pedido pedidos[1000];
+
+    int indice = 0;
+    int cadastrado = 0;
+    int contador = 0;
+
+    printf("====== SEJA BEM VINDO(A) A BELLA MASSA ======\n");
+
+    //chama a função menu
+    menu(clientes, &indice, &cadastrado, pedidos, &contador);
+
+    return 0;
+}
