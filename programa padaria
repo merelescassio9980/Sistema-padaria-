@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
@@ -37,6 +38,8 @@ void Registrarpedido(
 
 void pagamento(pedido *p);
 
+void Relatorio(pedido pedidos[], int contador);
+
 // FUNCAO MENU
 void menu(Cliente_Clube clientes[], int *indice, int *cadastrado,
           pedido pedidos[], int *contador) {
@@ -60,7 +63,7 @@ void menu(Cliente_Clube clientes[], int *indice, int *cadastrado,
         switch (opcao) {
 
             case 1:
-                //cadastrar clube
+                // Cadastrar clube
                 if (*indice < 100) {
                     cadastrarClube(clientes, *indice, cadastrado);
 
@@ -74,7 +77,7 @@ void menu(Cliente_Clube clientes[], int *indice, int *cadastrado,
                 break;
 
             case 2:
-                //registrar pedido
+                // Registrar pedido
                 Registrarpedido(clientes, indice, cadastrado,
                     (char[15]){0}, false, 0, (char[15]){0},
                     pedidos, contador);
@@ -84,11 +87,12 @@ void menu(Cliente_Clube clientes[], int *indice, int *cadastrado,
                 break;
 
             case 3:
-                // RelatoriodeVendas();
-                relatorio();
+                // Mostrar relatório
+                Relatorio(pedidos, *contador);
+                break;
 
             case 4:
-                //sair (sair do sistema)
+                // Sair do sistema
                 printf("\nSaindo do sistema...\n");
                 return;
 
@@ -138,18 +142,18 @@ void Registrarpedido(
     int continuar = 1;
     int clube_pedido = 0;
 
-    //pergunta se o cliente quer o clube da padaria
+    // Pergunta se o cliente quer o clube da padaria
     printf("\nDeseja por o clube da padaria Bella Massa? (1-sim 2-nao): ");
     scanf("%d", &Rclube);
 
     if (Rclube == 1) {
-        //verifica se o cliente tem clube
+
+        // Verifica se o cliente tem clube
         if (*indice > 0) {
 
-            //pede para digitar o cpf do clube
+            // Pede para digitar o CPF do clube
             printf("\nDigite o CPF do clube: ");
 
-            //verifica se o cpf do clube está digitado corretamente
             while (1) {
 
                 scanf("%14s", ccpf);
@@ -189,7 +193,8 @@ void Registrarpedido(
         }
 
     } else {
-        //se o cliente não quiser o clube ele pode digitar o cpf na nota
+
+        // Se o cliente não quiser o clube, pode colocar CPF na nota
         printf("\nDeseja colocar o CPF na nota? (1-sim 2-nao): ");
         scanf("%d", &Rncpf);
 
@@ -210,12 +215,12 @@ void Registrarpedido(
 
     pedidos[*contador].total_pedido = 0;
 
-    // REGISTRA SE O CLIENTE PARTICIPA DO CLUBE
+    // Registra se o cliente participa do clube
     pedidos[*contador].clube = clube_pedido;
 
     while (continuar == 1) {
 
-        //lista dos produtos
+        // Lista dos produtos
         printf("\nProdutos:\n");
         printf("1 - Pao frances (R$ 0,80)\n");
         printf("2 - Bolo (R$ 8,00)\n");
@@ -226,7 +231,6 @@ void Registrarpedido(
         printf("\nDigite o ID do produto (1-5): ");
         scanf("%d", &opcao);
 
-        //impede o usuario inserir o id errado
         if (opcao < 1 || opcao > 5) {
             printf("Produto invalido!\n");
             continue;
@@ -240,7 +244,7 @@ void Registrarpedido(
             continue;
         }
 
-        //calcula o valor da compra
+        // Calcula o valor da compra
         pedidos[*contador].quantidades[opcao - 1] += quantidade;
 
         switch (opcao) {
@@ -266,7 +270,7 @@ void Registrarpedido(
                 break;
         }
 
-        //pergunta se deseja adicionar mais um produto
+        // Pergunta se deseja adicionar mais um produto
         printf("\nDeseja adicionar outro produto?\n");
         printf("1 - Sim\n");
         printf("2 - Nao\n");
@@ -316,7 +320,7 @@ void pagamento(pedido *p) {
     printf("       CLUBE PADARIA\n");
     printf("=================================\n");
 
-    // VERIFICAÇÃO AUTOMÁTICA DO CLUBE
+    // Verificação automática do clube
     if (p->clube == 1) {
 
         aplicar_desconto(&p->total_pedido,
@@ -361,51 +365,51 @@ void pagamento(pedido *p) {
     // Processamento do pagamento
     switch (forma_pagamento) {
 
-    case 1:
+        case 1:
 
-        printf("\nPagamento em dinheiro.\n");
+            printf("\nPagamento em dinheiro.\n");
 
-        do {
-            printf("Valor recebido: R$ ");
+            do {
+                printf("Valor recebido: R$ ");
 
-            if (scanf("%f", &valor_recebido) != 1) {
-                printf("Valor invalido!\n");
-                while (getchar() != '\n');
-                valor_recebido = -1;
-                continue;
-            }
+                if (scanf("%f", &valor_recebido) != 1) {
+                    printf("Valor invalido!\n");
+                    while (getchar() != '\n');
+                    valor_recebido = -1;
+                    continue;
+                }
 
-            if (valor_recebido < p->total_pedido) {
-                printf("Valor insuficiente!\n");
-                printf("Faltam R$ %.2f\n",
-                       p->total_pedido - valor_recebido);
-            }
+                if (valor_recebido < p->total_pedido) {
+                    printf("Valor insuficiente!\n");
+                    printf("Faltam R$ %.2f\n",
+                           p->total_pedido - valor_recebido);
+                }
 
-        } while (valor_recebido < p->total_pedido);
+            } while (valor_recebido < p->total_pedido);
 
-        troco = valor_recebido - p->total_pedido;
-        break;
+            troco = valor_recebido - p->total_pedido;
+            break;
 
-    case 2:
+        case 2:
 
-        printf("\nPagamento via Pix.\n");
-        printf("Valor a transferir: R$ %.2f\n",
-               p->total_pedido);
-        break;
+            printf("\nPagamento via Pix.\n");
+            printf("Valor a transferir: R$ %.2f\n",
+                   p->total_pedido);
+            break;
 
-    case 3:
+        case 3:
 
-        printf("\nPagamento no cartao de debito.\n");
-        printf("Valor cobrado: R$ %.2f\n",
-               p->total_pedido);
-        break;
+            printf("\nPagamento no cartao de debito.\n");
+            printf("Valor cobrado: R$ %.2f\n",
+                   p->total_pedido);
+            break;
 
-    case 4:
+        case 4:
 
-        printf("\nPagamento no cartao de credito.\n");
-        printf("Valor cobrado: R$ %.2f\n",
-               p->total_pedido);
-        break;
+            printf("\nPagamento no cartao de credito.\n");
+            printf("Valor cobrado: R$ %.2f\n",
+                   p->total_pedido);
+            break;
     }
 
     // Resumo final
@@ -442,9 +446,48 @@ void pagamento(pedido *p) {
     printf("=================================\n");
 }
 
-//EMITIR NOTA
-void emitirNota(){
+// EMITIR NOTA
+void emitirNota() {
 
+}
+
+// RELATORIO DE VENDAS
+void Relatorio(pedido pedidos[], int contador) {
+
+    printf("\n====== RELATORIO DE VENDAS ======\n");
+
+    if (contador == 0) {
+        printf("Nenhum pedido foi realizado ainda.\n");
+        return;
+    }
+
+    float faturamento_total = 0.0f;
+    int total_produtos[5] = {0, 0, 0, 0, 0};
+
+    // Percorre todos os pedidos realizados
+    for (int i = 0; i < contador; i++) {
+
+        faturamento_total += pedidos[i].total_pedido;
+
+        // Soma a quantidade de cada produto vendido
+        for (int j = 0; j < 5; j++) {
+            total_produtos[j] += pedidos[i].quantidades[j];
+        }
+    }
+
+    printf("\nTotal de pedidos realizados: %d\n", contador);
+
+    printf("Faturamento total: R$ %.2f\n", faturamento_total);
+
+    printf("\n====== VENDAS POR PRODUTO ======\n");
+
+    printf("1 - Pao frances: %d unidades\n", total_produtos[0]);
+    printf("2 - Bolo: %d unidades\n", total_produtos[1]);
+    printf("3 - Pao de queijo: %d unidades\n", total_produtos[2]);
+    printf("4 - Minipizza: %d unidades\n", total_produtos[3]);
+    printf("5 - Minichurros: %d unidades\n", total_produtos[4]);
+
+    printf("\n================================\n");
 }
 
 // MAIN
@@ -459,7 +502,7 @@ int main() {
 
     printf("====== SEJA BEM VINDO(A) A BELLA MASSA ======\n");
 
-    //chama a função menu
+    // Chama a função menu
     menu(clientes, &indice, &cadastrado, pedidos, &contador);
 
     return 0;
